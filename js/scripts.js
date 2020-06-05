@@ -55,6 +55,7 @@ $(document).ready(function() {
         cResults += 1;
       }
     }
+
     //scoring each question
     score(parseInt($("input[name='question2']:checked").val()));
     score(parseInt($("select#question3").val()));
