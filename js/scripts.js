@@ -8,7 +8,7 @@ function revealResults(jsResults, pythonResults, cResults) {
   else if (pythonResults > jsResults && pythonResults > cResults) {
     $("section#python").show();
   }
-  else if (cResults > jsResults && cResults > cResults) {
+  else if (cResults > jsResults && cResults > pythonResults) {
     $("section#c").show();
   }
   //handling ties
@@ -46,22 +46,22 @@ $(document).ready(function() {
     //scoring function
     function score(input) {
       if (input === 1) {
-        jsResults +=
+        jsResults += 1;
       }
       if (input === 2) {
-        pythonResults +=
+        pythonResults += 1;
       }
       if (input === 3) {
-        cResults +=
+        cResults += 1;
       }
     }
     //scoring each question
-    score(parseInt(("input[name='question2']:checked").val()));
-    score(parseInt(("select#question3").val()));
-    score(parseInt(("select#question4").val()));
-    score(parseInt(("input[name='question5']:checked").val()));
+    score(parseInt($("input[name='question2']:checked").val()));
+    score(parseInt($("select#question3").val()));
+    score(parseInt($("select#question4").val()));
+    score(parseInt($("input[name='question5']:checked").val()));
     //add name to results
-    addName($("input#name".val()));
+    addName($("input#name").val());
     //reveal results based on scores
     revealResults(jsResults, pythonResults, cResults);
   });
