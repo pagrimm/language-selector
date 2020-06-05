@@ -16,3 +16,7 @@ input[type="radio"] {
   vertical-align: middle;
   margin-top: -2px;
 }
+
+.question {
+  margin-bottom: 20px;
+}
