@@ -29,11 +29,12 @@ function revealResults(jsResults, pythonResults, cResults) {
   }
 }
 
-//function to add player's name to the results titles
-function addName(name) {
+//function to add player's name to the results title and color it based on their favorite color
+function addName(name, color) {
   $(".name-target").remove();
   $(".result-title").prepend("<span class=\"name-target\"></span>");
   $(".name-target").text(name);
+  $(".name-target").css("color", color)
 }
 
 //main submission user interface function
@@ -60,13 +61,13 @@ $(document).ready(function() {
     score(parseInt($("select#question3").val()));
     score(parseInt($("select#question4").val()));
     score(parseInt($("input[name='question5']:checked").val()));
-    //add name to results
-    addName($("input#name").val());
+    //add name and favorite color to results
+    addName($("input#name").val(), $("input#question1").val());
     //reveal results based on scores
     revealResults(jsResults, pythonResults, cResults);
     //scroll to the revealed results
-    $('html, body').animate({
-      scrollTop: ($('section.results').first().offset().top)
-    },500);
+    document.querySelector('section.results').scrollIntoView({
+      behavior: 'smooth' 
+    });
   });
 });

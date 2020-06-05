@@ -60,6 +60,11 @@ section.results {
   display: none;
 }
 
+input#question1 {
+  width: 100px;
+  height: 100px;
+}
+
 h3#tie {
   display: none;
   margin-bottom:20px;
