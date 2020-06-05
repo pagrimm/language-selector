@@ -1,5 +1,5 @@
 # Programming Language Selector
-** Weekly Project for Epicodus**
+**Weekly Project for Epicodus**
 **By Peter Grimm, 06.05.2020**
 
 ## Description
@@ -8,7 +8,8 @@ Weekly project to create a page that recommends a programming language based on 
 
 ## Setup/Installation Requirements
 
-* Clone this repository `https://github.com/pagrimm/language-selector.git`
+* Clone this repository: https://github.com/pagrimm/language-selector.git 
+* `git clone https://github.com/pagrimm/language-selector.git` 
 * Browse to the `language-suggester` folder
 * Open `index.html` in a browser of your choice
 
@@ -16,7 +17,7 @@ Weekly project to create a page that recommends a programming language based on 
 
 HTML  
 CSS  
-Bootstrap
+Bootstrap  
 jQuery
 
 ## Legal
