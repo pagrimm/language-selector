@@ -1,15 +1,15 @@
-# Project Name
-** for Epicodus**
-**By Peter Grimm, 05.29.2020**
+# Programming Language Selector
+** Weekly Project for Epicodus**
+**By Peter Grimm, 06.05.2020**
 
 ## Description
 
-Insert description here
+Weekly project to create a page that recommends a programming language based on the results of a quiz. Designed to showcase my skills in DOM transversal and manipulation using jQuery, branching Javascript logic, and form input.
 
 ## Setup/Installation Requirements
 
-* Clone this repository 
-* Browse to the ` ` folder
+* Clone this repository `https://github.com/pagrimm/language-selector.git`
+* Browse to the `language-suggester` folder
 * Open `index.html` in a browser of your choice
 
 ## Technologies Used
