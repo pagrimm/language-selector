@@ -47,3 +47,11 @@ input[type="radio"] {
 .question {
   margin-bottom: 20px;
 }
+
+section.results {
+  display: none;
+}
+
+h3#tie {
+  display: none;
+}

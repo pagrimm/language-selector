@@ -39,19 +39,20 @@ function addName(name) {
 //main submission user interface function
 $(document).ready(function() {
   $("form#quiz").submit(function(event) {
+    event.preventDefault();
     let jsResults = 0;
     let pythonResults = 0;
     let cResults = 0;
     //scoring function
     function score(input) {
       if (input === 1) {
-        jsResults +=;
+        jsResults +=
       }
       if (input === 2) {
-        pythonResults +=;
+        pythonResults +=
       }
       if (input === 3) {
-        cResults +=;
+        cResults +=
       }
     }
     //scoring each question
