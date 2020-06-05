@@ -1,8 +1,10 @@
 //function to reveal quiz results based on cumulative point values
 function revealResults(jsResults, pythonResults, cResults) {
+  //reset state of results to initial state
   $("section.results").hide();
   $("section.results").removeClass("active");
   $("h3#tie").hide();
+  //handling win conditions
   if (jsResults > pythonResults && jsResults > cResults) {
     $("section#javascript").show();
     $("section#javascript").addClass("active");
@@ -15,7 +17,7 @@ function revealResults(jsResults, pythonResults, cResults) {
     $("section#c").show();
     $("section#c").addClass("active");
   }
-  //handling ties
+  //handling tie conditions
   else if (jsResults === pythonResults) {
     $("h3#tie").show();
     $("section#javascript").show();
