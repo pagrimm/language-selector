@@ -18,6 +18,8 @@ img {
 
 .form-control {
   background-color: lightgray;
+  border: 5px solid #272B30;
+  padding: 5px;
 }
 
 
@@ -61,8 +63,10 @@ section.results {
 }
 
 input#question1 {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 50px;
+  background-color: #272B30;
+  border: 1px solid #272B30;
 }
 
 h3#tie {
