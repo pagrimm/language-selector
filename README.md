@@ -17,7 +17,7 @@ Weekly project for Epicodus to create a page that recommends a programming langu
 
 HTML  
 CSS  
-Bootstrap v4.5.0
+Bootstrap v4.5.0  
 jQuery v3.5.1
 
 ## Legal
