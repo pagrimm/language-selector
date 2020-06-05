@@ -1,10 +1,10 @@
 # Programming Language Selector
 **Weekly Project for Epicodus**  
-**By Peter Grimm, 06.05.2020**
+By Peter Grimm, 06.05.2020
 
 ## Description
 
-Weekly project to create a page that recommends a programming language based on the results of a quiz. Designed to showcase my skills in DOM transversal and manipulation using jQuery, branching Javascript logic, and form input.
+Weekly project for Epicodus to create a page that recommends a programming language based on the results of a quiz. Designed to showcase my skills in DOM transversal and manipulation using jQuery, branching Javascript logic, and form input.
 
 ## Setup/Installation Requirements
 
