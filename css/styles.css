@@ -27,6 +27,10 @@ input[type="radio"] {
   margin-top: -2px;
 }
 
+.question {
+  margin-top:40px;
+}
+
 .card-title{
   margin-bottom: 30px;
 }
@@ -46,6 +50,10 @@ input[type="radio"] {
 
 .question {
   margin-bottom: 20px;
+}
+
+.center-align{
+  text-align: center;
 }
 
 section.results {

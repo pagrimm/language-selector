@@ -55,7 +55,6 @@ $(document).ready(function() {
         cResults += 1;
       }
     }
-
     //scoring each question
     score(parseInt($("input[name='question2']:checked").val()));
     score(parseInt($("select#question3").val()));
@@ -65,5 +64,9 @@ $(document).ready(function() {
     addName($("input#name").val());
     //reveal results based on scores
     revealResults(jsResults, pythonResults, cResults);
+    //scroll to the revealed results
+    $('html, body').animate({
+      scrollTop: ($('section.results').first().offset().top)
+    },500);
   });
 });
