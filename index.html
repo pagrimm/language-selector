@@ -18,11 +18,35 @@
   </header>
   <!-- form section -->
   <section class="card text-white bg-primary mb-3">
-    <div class="card-header">Questions!</div>
+    <div class="card-header bg-info">Questions!</div>
     <div class="card-body">
-      <h4 class="card-title">What is your name?</h4>
-      <input type="text">
-      <p class="card-text"></p>
+      <form id="form1">
+        <p>
+          <h4>What is your name?</h4>
+        <input type="text">
+        </p>
+        <p class="card-text">
+          <h4>Why do you want to learn a programming language?</h4>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label>
+              <input type="radio" name="question1" value="1" checked>
+              To build interactive web pages
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="question1" value="2" >
+              To automate my workflow to increase my efficiency and avoid repetitive tasks
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="question1" value="3" >
+              To learn the underlying principles and fundamentals of computer architecture
+            </label>
+          </div>
+        </p>
+      </form>
     </div>
   </section>
   <!-- results section -->

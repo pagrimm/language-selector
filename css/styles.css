@@ -6,3 +6,13 @@ h1 {
   word-wrap: break-word
 }
 
+.card-header {
+  text-shadow: 1px 1px 1px #000000;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
