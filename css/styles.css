@@ -6,8 +6,18 @@ h1 {
   word-wrap: break-word
 }
 
+img {
+  float: left;
+  max-width: 200px;
+  max-height: 200px;
+  background-color: #272B30;
+  border: 10px solid #272B30;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
 .form-control {
-  background-color: gainsboro;
+  background-color: lightgray;
 }
 
 
@@ -17,6 +27,9 @@ input[type="radio"] {
   margin-top: -2px;
 }
 
+.card-title{
+  margin-bottom: 30px;
+}
 .card-header {
   color: white;
   text-shadow: 1px 1px 1px #000000;
