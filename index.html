@@ -1,70 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.css" rel="stylesheet" type = "text/css">
-  <link href="css/styles.css" rel="stylesheet" type = "text/css">
-  <script src="js/jquery-3.5.1.js"></script>
-  <script src="js/scripts.js"></script>
-  <title>Programming Language Suggester</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet" type = "text/css">
+    <link href="css/styles.css" rel="stylesheet" type = "text/css">
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Programming Language Suggester</title>
+  </head>
 
-<body class="container">
-  <!-- title -->
-  <header class="jumbotron">
-    <h1 class="display-3"><span class="text-info">Programming</span>.<span class="text-warning">Language</span><span class="text-success">(</span><span class="text-info">Selector</span><span class="text-success">)</span></h1>
-    <h3>A quiz to find out what programming language is right for you.</h3>
-  </header>
-  <!-- form section -->
-  <section class="card text-white bg-primary mb-3">
-    <div class="card-header bg-info">Questions!</div>
-    <div class="card-body">
-      <form id="form1">
-        <div class="question">
-          <h4>What is your name?</h4>
-          <input id="name" class="form-control" type="text">
-        </div>
-        <div class="question">
-          <h4>Why do you want to learn a programming language?</h4>
-          <div class="radio">
-            <label>
-              <input type="radio" name="question2" value="1" checked>
-              To build interesting and interactive web content
-            </label>
+  <body class="container">
+
+    <!-- title -->
+    <header class="jumbotron">
+      <h1 class="display-3"><span class="text-info">Programming</span>.<span class="text-warning">Language</span><span class="text-success">(</span><span class="text-info">Selector</span><span class="text-success">)</span></h1>
+      <h3>Find out what programming language is right for you.</h3>
+    </header>
+
+    <!-- user input section -->
+    <section class="card bg-primary mb-3">
+      <div class="card-header text-info">Questions!</div>
+      <div class="card-body">
+        <form id="form1">
+          <!--- question 1-->
+          <div class="question">
+            <h5 class="text-white">What is your name?</h5>
+            <input id="name" class="form-control" type="text">
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="question2" value="2" >
-              To automate my workflow to increase my efficiency and avoid repetitive tasks
-            </label>
+          <!--- question 2-->
+          <div class="question">
+            <h5 class="text-white">Which of these best describes why you want to learn a programming language?</h5>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question2" value="1" checked>
+                I want to build interesting and interactive web content.
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question2" value="2" >
+                I want to automate my workflow to increase my efficiency and avoid repetitive tasks.
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question2" value="3" >
+                I want to learn the underlying principles and fundamentals of computer architecture.
+              </label>
+            </div>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="question2" value="3" >
-              To learn the underlying principles and fundamentals of computer architecture
-            </label>
+          <!--- question 3-->
+          <div class="question">
+            <h5 class="text-white">Select an adjective that best describes you:</h5>
+            <select class="form-control" id="question3">
+              <option disabled selected value>Select an adjective</option>
+              <option value="2">Driven</option>
+              <option value="1">Dynamic</option>
+              <option value="2">Efficient</option>
+              <option value="3">Knowledgable</option>
+              <option value="3">Methodical</option>
+              <option value="1">Practical</option>
+            </select>
           </div>
-        </div>
-        <div class="question">
-          <h4>Select an adjective that describes you</h4>
-          <select class="form-control" id="question2">
-            <option value="3">Methodical</option>
-            <option value="1">Practical</option>
-            <option value="2">Efficient</option>
-          </select>
-        </div>
-      </form>
+          <!--- question 4-->
+          <div class="question">
+            <h5 class="text-white">Select a spirit animal that best embodies you:</h5>
+            <select class="form-control" id="question4">
+              <option disabled selected value>Select an animal</option>
+              <option value="2">Ant</option>
+              <option value="1">Beaver</option>
+              <option value="2">Bumblebee</option>
+              <option value="1">Cheetah</option>
+              <option value="3">Elephant</option>
+              <option value="2">Salmon</option>
+              <option value="3">Spider</option>
+              <option value="1">Squirrel</option>
+              <option value="3">Turtle</option>
+            </select>
+          </div>
+          <!--- question 5-->
+          <div class="question">
+            <h5 class="text-white">In a school setting, which of these best describes you?</h5>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question5" value="1" checked>
+                I prefer to take the time to completely understand all the concepts presented in the reading, even if it means not finishing all of my homework.
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question5" value="2" >
+                I prefer to make sure all my assignments are completed, even if I don't understand everything. I can go back later if I have time.
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="question5" value="3" >
+                I prefer to timebox studying and homework so that I use my time efficiently.
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- results section -->
+    <div class="results card border-success mb-3">
+      <div class="card-header text-success">Your Results!</div>
+      <div class="card-body">
+        <h5 class="card-title text-white">, your language is... Javascript!</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
     </div>
-  </section>
-  <!-- results section -->
-  <section>
 
-  </section>
-  <!-- copyright footer -->
-  <footer>
+    <div class="results card border-success mb-3">
+      <div class="card-header text-success">Your Results!</div>
+      <div class="card-body">
+        <h5 class="card-title text-white">, your language is... Python!</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
 
-  </footer>
-  
-</body>
+    <div class="results card border-success mb-3">
+      <div class="card-header text-success">Your Results!</div>
+      <div class="card-body">
+        <h5 class="card-title text-white">, your language is... C!</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+
+    <!-- copyright footer -->
+    <footer>
+
+    </footer>
+    
+  </body>
 </html>
