@@ -1,35 +1,43 @@
 //function to reveal quiz results based on cumulative point values
 function revealResults(jsResults, pythonResults, cResults) {
   $("section.results").hide();
+  $("section.results").removeClass("active");
   $("h3#tie").hide();
   if (jsResults > pythonResults && jsResults > cResults) {
     $("section#javascript").show();
+    $("section#javascript").addClass("active");
   }
   else if (pythonResults > jsResults && pythonResults > cResults) {
     $("section#python").show();
+    $("section#python").addClass("active");
   }
   else if (cResults > jsResults && cResults > pythonResults) {
     $("section#c").show();
+    $("section#c").addClass("active");
   }
   //handling ties
   else if (jsResults === pythonResults) {
     $("h3#tie").show();
     $("section#javascript").show();
+    $("section#javascript").addClass("active");
     $("section#python").show();
   }
   else if (pythonResults === cResults) {
     $("h3#tie").show();
     $("section#python").show();
+    $("section#python").addClass("active");
     $("section#c").show();
   }
   else if (jsResults === cResults) {
     $("h3#tie").show();
     $("section#javascript").show();
+    $("section#javascript").addClass("active");
     $("section#c").show();
   }
 }
 
-//function to add player's name to the results title and color it based on their favorite color
+//function to add player's name to the results title
+//add color style based on their favorite color
 function addName(name, color) {
   $(".name-target").remove();
   $(".result-title").prepend("<span class=\"name-target\"></span>");
@@ -66,8 +74,6 @@ $(document).ready(function() {
     //reveal results based on scores
     revealResults(jsResults, pythonResults, cResults);
     //scroll to the revealed results
-    document.querySelector('section.results').scrollIntoView({
-      behavior: 'smooth' 
-    });
+    document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
   });
 });
