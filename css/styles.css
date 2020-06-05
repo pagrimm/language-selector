@@ -36,6 +36,14 @@ input[type="radio"] {
   font-weight: bold;
 }
 
+.card-text a {
+  color: #5bc0de;
+}
+
+.card-text a:hover {
+  color: #3f859b;
+}
+
 .question {
   margin-bottom: 20px;
 }
