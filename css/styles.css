@@ -30,6 +30,10 @@ input:-webkit-autofill, input:focus:-webkit-autofill {
   font-family: 'Inconsolata', monospace;
 }
 
+span.line {
+  display: inline-block;
+}
+
 input[type="radio"] {
   margin-right: 5px;
   vertical-align: middle;
