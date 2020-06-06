@@ -4,6 +4,7 @@ body {
 
 button {
   width: 90px;
+  margin-right: 5px;
 }
 
 h1 {
@@ -32,6 +33,22 @@ input:-webkit-autofill, input:focus:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px #1c1e22 inset;
   -webkit-text-fill-color: #62c462;
   font-family: 'Inconsolata', monospace;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: gray;
+}
+
+.form-control:-ms-input-placeholder { 
+  color: gray;
+}
+
+.form-control::placeholder {
+  color: gray;
+}
+
+select:invalid {
+  color: gray; 
 }
 
 span.line {
