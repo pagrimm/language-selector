@@ -1,44 +1,66 @@
-//function to reveal quiz results based on cumulative point values
-function revealResults(jsResults, pythonResults, cResults) {
+//function to total score and evaluate winner
+function evalWinner(scores) {
+  let winner;
+  let jsTotal = 0;
+  let pythonTotal = 0;
+  let cTotal = 0;
+  //totaling scores for each language
+  for (i = 0; i < scores.length; i++) {
+    if (scores[i] === 1) {
+      jsTotal++;
+    } else if (scores[i] === 2) {
+      pythonTotal++;
+    } else if (scores[i] === 3) {
+      cTotal++;
+    }
+  }
   //handling win conditions
-  if (jsResults > pythonResults && jsResults > cResults) {
-    $("section#javascript").show();
-    $("section#javascript").addClass("active");
+  if (jsTotal > pythonTotal && jsTotal > cTotal) {
+    winner = "javascript"
+    return winner;
   }
-  else if (pythonResults > jsResults && pythonResults > cResults) {
-    $("section#python").show();
-    $("section#python").addClass("active");
+  else if (pythonTotal > jsTotal && pythonTotal > cTotal) {
+    winner = "python"
+    return winner;
   }
-  else if (cResults > jsResults && cResults > pythonResults) {
-    $("section#c").show();
-    $("section#c").addClass("active");
+  else if (cTotal > jsTotal && cTotal > pythonTotal) {
+    winner = "c";
+    return winner;
   }
   //handling tie conditions
-  else if (jsResults === pythonResults) {
-    $("h3#tie").show();
-    $("section#javascript").show();
-    $("section#javascript").addClass("active");
-    $("section#python").show();
+  else if (jsTotal === pythonTotal) {
+    winner = ["javascript", "python"];
+    return winner;
   }
-  else if (pythonResults === cResults) {
-    $("h3#tie").show();
-    $("section#python").show();
-    $("section#python").addClass("active");
-    $("section#c").show();
+  else if (pythonTotal === cTotal) {
+    winner = ["python", "c"];
+    return winner;
   }
-  else if (jsResults === cResults) {
-    $("h3#tie").show();
-    $("section#javascript").show();
-    $("section#javascript").addClass("active");
-    $("section#c").show();
+  else if (jsTotal === cTotal) {
+    winner = ["javascript", "c"];
+    return winner;
   }
+}
+
+//function to reveal the winning section
+function revealWinner(winner) {
+  $("section#" + winner).show();
+  $("section#" + winner).addClass("active");
+}
+
+//function to reveal two sections in case of a tie
+function revealTie(winnerArray) {
+  $("h3#tie").show();
+  $("section#" + winnerArray[0]).show();
+  $("section#" + winnerArray[0]).addClass("active");
+  $("section#"+ winnerArray[1]).show();
 }
 
 //function to add name to the results title, add favorite color to name
 function addName(name, color) {
   $(".result-title").prepend("<span class=\"name-target\"></span>");
   $(".name-target").text(name);
-  $(".name-target").css("color", color)
+  $(".name-target").css("color", color);
 }
 
 //function to clear all inputs, reset radio buttons to default positions
@@ -59,41 +81,24 @@ function resetResults(){
   $(".name-target").remove();
 }
 
-//function for submission
+//function for user interface, submit/reset button, calls other functions
 $(document).ready(function() {
   $("form#quiz").submit(function(event) {
     event.preventDefault();
     resetResults();
-    let jsResults = 0;
-    let pythonResults = 0;
-    let cResults = 0;
-    //function for scoring user inputs
-    function score(input) {
-      if (input === 1) {
-        jsResults += 1;
-      }
-      if (input === 2) {
-        pythonResults += 1;
-      }
-      if (input === 3) {
-        cResults += 1;
-      }
-    }
-    //scoring each question
-    score(parseInt($("input[name='question2']:checked").val()));
-    score(parseInt($("select#question3").val()));
-    score(parseInt($("select#question4").val()));
-    score(parseInt($("input[name='question5']:checked").val()));
-    //adding name and favorite color to results
+    let scores = [parseInt($("input[name='question2']:checked").val()), parseInt($("select#question3").val()), parseInt($("select#question4").val()), parseInt($("input[name='question5']:checked").val())];
+    let winner = evalWinner(scores);
     addName($("input#name").val(), $("input#question1").val());
-    //revealing results based on scores
-    revealResults(jsResults, pythonResults, cResults);
-    //scrolling to the revealed results
+    if (Array.isArray(winner)) {
+      revealTie(winner);
+    }
+    else {
+      revealWinner(winner);
+    }
     document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
-  });
-  //function for reset button
-  $("#reset").click(function(){
-    resetInputs();
-    resetResults();
+    $("#reset").click(function(){
+      resetInputs();
+      resetResults();
+    });
   });
 });
