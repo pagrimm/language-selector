@@ -1,9 +1,5 @@
 //function to reveal quiz results based on cumulative point values
 function revealResults(jsResults, pythonResults, cResults) {
-  //reset state of results to initial state
-  $("section.results").hide();
-  $("section.results").removeClass("active");
-  $("h3#tie").hide();
   //handling win conditions
   if (jsResults > pythonResults && jsResults > cResults) {
     $("section#javascript").show();
@@ -38,37 +34,40 @@ function revealResults(jsResults, pythonResults, cResults) {
   }
 }
 
-//function to add player's name to the results title
-//add color style based on their favorite color
+//function to add name to the results title, add favorite color to name
 function addName(name, color) {
-  $(".name-target").remove();
   $(".result-title").prepend("<span class=\"name-target\"></span>");
   $(".name-target").text(name);
   $(".name-target").css("color", color)
 }
 
-//reset function clears all inputs, resets radio buttons, hides results
-function resetAll() {
+//function to clear all inputs, reset radio buttons to default positions
+function resetInputs() {
   $("select").val("");
   $("input[type=text]").val("");
   $("input[type=radio]").prop("checked", false);
   $("input[type=color]").val("#62c462");
   $("input[name=question2][value=1]").prop("checked", true);
   $("input[name=question5][value=3]").prop("checked", true);
+}
+
+//function to reset results to hidden
+function resetResults(){
   $("section.results").hide();
   $("section.results").removeClass("active");
   $("h3#tie").hide();
   $(".name-target").remove();
 }
 
-//submission function
+//function for submission
 $(document).ready(function() {
   $("form#quiz").submit(function(event) {
     event.preventDefault();
+    resetResults();
     let jsResults = 0;
     let pythonResults = 0;
     let cResults = 0;
-    //scoring function
+    //function for scoring user inputs
     function score(input) {
       if (input === 1) {
         jsResults += 1;
@@ -85,15 +84,16 @@ $(document).ready(function() {
     score(parseInt($("select#question3").val()));
     score(parseInt($("select#question4").val()));
     score(parseInt($("input[name='question5']:checked").val()));
-    //add name and favorite color to results
+    //adding name and favorite color to results
     addName($("input#name").val(), $("input#question1").val());
-    //reveal results based on scores
+    //revealing results based on scores
     revealResults(jsResults, pythonResults, cResults);
-    //scroll to the revealed results
+    //scrolling to the revealed results
     document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
   });
-  //reset button
+  //function for reset button
   $("#reset").click(function(){
-    resetAll();
+    resetInputs();
+    resetResults();
   });
 });
