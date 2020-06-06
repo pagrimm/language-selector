@@ -47,7 +47,21 @@ function addName(name, color) {
   $(".name-target").css("color", color)
 }
 
-//main submission user interface function
+//reset function clears all inputs, resets radio buttons, hides results
+function resetAll() {
+  $("select").val("");
+  $("input[type=text]").val("");
+  $("input[type=radio]").prop("checked", false);
+  $("input[type=color]").val("#62c462");
+  $("input[name=question2][value=1]").prop("checked", true);
+  $("input[name=question5][value=3]").prop("checked", true);
+  $("section.results").hide();
+  $("section.results").removeClass("active");
+  $("h3#tie").hide();
+  $(".name-target").remove();
+}
+
+//submission function
 $(document).ready(function() {
   $("form#quiz").submit(function(event) {
     event.preventDefault();
@@ -77,5 +91,9 @@ $(document).ready(function() {
     revealResults(jsResults, pythonResults, cResults);
     //scroll to the revealed results
     document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
+  });
+  //reset button
+  $("#reset").click(function(){
+    resetAll();
   });
 });
