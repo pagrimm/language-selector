@@ -68,9 +68,8 @@ function resetInputs() {
   $("select").val("");
   $("input[type=text]").val("");
   $("input[type=radio]").prop("checked", false);
+  $("input.default-radio").prop("checked", true);
   $("input[type=color]").val("#62c462");
-  $("input[name=question2][value=1]").prop("checked", true);
-  $("input[name=question5][value=3]").prop("checked", true);
 }
 
 //function to reset results to hidden
@@ -96,9 +95,9 @@ $(document).ready(function() {
       revealWinner(winner);
     }
     document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
-    $("#reset").click(function(){
-      resetInputs();
-      resetResults();
-    });
+  });
+  $("#reset").click(function(){
+    resetInputs();
+    resetResults();
   });
 });
