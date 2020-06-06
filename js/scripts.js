@@ -16,7 +16,7 @@ function evalWinner(scores) {
   }
   //handling win conditions
   if (jsTotal > pythonTotal && jsTotal > cTotal) {
-    winner = "javascript"
+    winner = "javascript";
     return winner;
   }
   else if (pythonTotal > jsTotal && pythonTotal > cTotal) {
