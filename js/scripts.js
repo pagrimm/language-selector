@@ -40,9 +40,7 @@ function evalWinner(scores) {
     }
   }
   //finds the highest score value in the array of objects
-  highScore = Math.max.apply(Math, totals.map(function(total) { 
-    return total.score; 
-  }));
+  highScore = Math.max.apply(Math, totals.map(total => total.score));
   //filter the array of objects to find any objects with score values that equal the high score
   winnerObjs = totals.filter(total => total.score == highScore);
   //convert the name values of winning object/objects to an array
@@ -61,7 +59,7 @@ function revealWinner(winner) {
     $("h3#tie").show();
     $("section#" + winner[0]).show();
     $("section#" + winner[0]).addClass("active");
-    $("section#"+ winner[1]).show();
+    $("section#" + winner[1]).show();
   }
 }
 
