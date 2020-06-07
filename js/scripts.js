@@ -1,66 +1,73 @@
-//function to total score and evaluate winner
+//BUSINESS LOGIC
+//Function to get inputs from the name and favorite color field
+function getNameInputs(){
+  let name = [
+    $("input#name").val(),
+    $("input#question1").val()
+  ];
+  return name;
+}
+
+//Function to get inputs from the scored fields
+function getScoreInputs() {
+  let scores = [
+    parseInt($("input[name='question2']:checked").val()),
+    parseInt($("select#question3").val()),
+    parseInt($("select#question4").val()),
+    parseInt($("input[name='question5']:checked").val())
+  ];
+  return scores;
+}
+
+//Function to add up scores and determine the winner
 function evalWinner(scores) {
+  let highScore;
+  let winnerObjs;
   let winner;
-  let jsTotal = 0;
-  let pythonTotal = 0;
-  let cTotal = 0;
-  //totaling scores for each language
+  let totals = [
+    {"name":"javascript","score":0},
+    {"name":"python","score":0},
+    {"name":"c","score":0},
+  ]
+  //loop through scores array, add up total scores
   for (i = 0; i < scores.length; i++) {
     if (scores[i] === 1) {
-      jsTotal++;
+      totals[0].score++;
     } else if (scores[i] === 2) {
-      pythonTotal++;
+      totals[1].score++;
     } else if (scores[i] === 3) {
-      cTotal++;
+      totals[2].score++;
     }
   }
-  //handling win conditions
-  if (jsTotal > pythonTotal && jsTotal > cTotal) {
-    winner = "javascript";
-    return winner;
-  }
-  else if (pythonTotal > jsTotal && pythonTotal > cTotal) {
-    winner = "python"
-    return winner;
-  }
-  else if (cTotal > jsTotal && cTotal > pythonTotal) {
-    winner = "c";
-    return winner;
-  }
-  //handling tie conditions
-  else if (jsTotal === pythonTotal) {
-    winner = ["javascript", "python"];
-    return winner;
-  }
-  else if (pythonTotal === cTotal) {
-    winner = ["python", "c"];
-    return winner;
-  }
-  else if (jsTotal === cTotal) {
-    winner = ["javascript", "c"];
-    return winner;
-  }
+  //finds the highest score value in the array of objects
+  highScore = Math.max.apply(Math, totals.map(function(total) { return total.score; }));
+  //filter the array of objects to find any objects with score values that equal the high score
+  winnerObjs = totals.filter(total => total.score == highScore);
+  //convert the name values of winning object/objects to an array
+  winner = winnerObjs.map(({ name }) => name); 
+  return winner;
 }
 
 //function to reveal the winning section
 function revealWinner(winner) {
-  $("section#" + winner).show();
-  $("section#" + winner).addClass("active");
-}
-
-//function to reveal two sections in case of a tie
-function revealTie(winnerArray) {
-  $("h3#tie").show();
-  $("section#" + winnerArray[0]).show();
-  $("section#" + winnerArray[0]).addClass("active");
-  $("section#"+ winnerArray[1]).show();
+  if (winner.length === 1) {
+    $("section#" + winner[0]).show();
+    $("section#" + winner[0]).addClass("active");
+  }
+  //handle tie conditions
+  else {
+    $("h3#tie").show();
+    $("section#" + winner[0]).show();
+    $("section#" + winner[0]).addClass("active");
+    $("section#"+ winner[1]).show();
+  }
 }
 
 //function to add name to the results title, add favorite color to name
-function addName(name, color) {
+function addName(name) {
   $(".result-title").prepend("<span class=\"name-target\"></span>");
-  $(".name-target").text(name);
-  $(".name-target").css("color", color);
+  $(".name-target").text(name[0]);
+  $(".name-target").css("color", name[1]);
 }
 
 //function to clear all inputs, reset radio buttons to default positions
@@ -80,20 +87,17 @@ function resetResults(){
   $(".name-target").remove();
 }
 
+//USER LOGIC
 //function for user interface, submit/reset button, calls other functions
 $(document).ready(function() {
   $("form#quiz").submit(function(event) {
     event.preventDefault();
     resetResults();
-    let scores = [parseInt($("input[name='question2']:checked").val()), parseInt($("select#question3").val()), parseInt($("select#question4").val()), parseInt($("input[name='question5']:checked").val())];
+    let name = getNameInputs();
+    let scores = getScoreInputs();
     let winner = evalWinner(scores);
-    addName($("input#name").val(), $("input#question1").val());
-    if (Array.isArray(winner)) {
-      revealTie(winner);
-    }
-    else {
-      revealWinner(winner);
-    }
+    addName(name);
+    revealWinner(winner);
     document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
   });
   $("#reset").click(function(){
