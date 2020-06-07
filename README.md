@@ -9,7 +9,7 @@ Weekly project for Epicodus to create a page that recommends a programming langu
 ## Setup/Installation Requirements
 
 * Clone this repository: https://github.com/pagrimm/language-selector.git using `git clone https://github.com/pagrimm/language-selector.git` 
-* Browse to the `language-suggester` folder where the repository was cloned
+* Browse to the `language-selector` folder where the repository was cloned
 * Open `index.html` in a browser of your choice
 * Alternatively, this site is available via GitHub Pages: https://pagrimm.github.io/language-selector/
 
