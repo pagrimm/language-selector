@@ -52,7 +52,7 @@ function evalWinner(scores) {
 
 //function to break ties, returns a single entry in 
 function tieBreaker (winner) {
-  let newWinner = winner
+  let newWinner = winner;
   if (parseInt($("input[name='tiebreaker-question']:checked").val()) === 1) {
     newWinner.splice(1,1)
     return newWinner;
@@ -101,7 +101,7 @@ function resetInputs() {
   $("input[type=color]").val("#62c462");
 };
 
-//function to reset results to hidden
+//function to reset results to hidden, enable disabled input fields
 function resetResults(){
   $("section.results").hide();
   $("section.results").removeClass("active");
