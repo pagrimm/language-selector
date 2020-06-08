@@ -21,6 +21,11 @@ img {
   margin-bottom: 10px;
 }
 
+.grayout {
+  opacity: 0.6; 
+  filter: alpha(opacity = 60);
+}
+
 .form-control, .form-control:focus {
   background-color: #1c1e22;
   color: #62c462;
@@ -47,12 +52,22 @@ input:-webkit-autofill, input:focus:-webkit-autofill {
   color: gray;
 }
 
+.form-control:disabled {
+  background-color: #1c1e22;
+}
+
 select:invalid {
   color: gray; 
 }
 
+
+
 span.line {
   display: inline-block;
+}
+
+button.tie-button {
+  margin-top:20px
 }
 
 input[type="radio"] {
@@ -90,7 +105,7 @@ input[type="radio"] {
   text-align: center;
 }
 
-section.results {
+section.results, section.tiebreaker {
   display: none;
 }
 

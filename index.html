@@ -22,10 +22,10 @@
     </header>
 
     <!-- user input section -->
-    <section class="card bg-primary mb-3">
+    <section class="quiz card bg-primary mb-3">
       <div class="card-header bg-info text-white">Quiz!</div>
       <div class="card-body">
-        <form id="quiz">
+        <form id="quiz-form">
           <!--- question 0-->
           <div>
             <h5 class="text-white">What is your name?</h5>
@@ -115,9 +115,31 @@
       </div>
     </section>
 
+    <!-- tiebreaker section-->
+    <section class="tiebreaker card border-danger mb-3">
+      <div class="card-header bg-danger text-white">Tie Breaker!</div>
+      <div class="card-body">
+        <form id="tiebreaker-form">
+          <h5 class="text-white">You are a traveller. Two roads diverge in a yellow wood. Which road do you take?</h5>
+          <div class="radio">
+            <label>
+              <input class="default-radio" type="radio" name="tiebreaker-question" value="1" checked>
+              The road less travelled.
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="tiebreaker-question" value="2" >
+              The road more travelled.
+            </label>
+          </div>
+          <button type="submit" class="tie-button btn btn-info">Submit</button>
+        </form>
+      </div>
+    </section>
+
     <!-- results section -->
     <!-- javascript results -->
-    <h3 id="tie" class="text-success">It's a tie! Either of these languages would be suited to your tastes.</h3>
     <section id="javascript" class="results card border-success mb-3">
       <div class="card-header bg-success text-white">Your Results!</div>
       <div class="card-body">

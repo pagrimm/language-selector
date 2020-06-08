@@ -1,5 +1,5 @@
 //BUSINESS LOGIC
-//Function to get inputs from the name and favorite color field
+//function to get inputs from the name and favorite color field
 function getNameInputs(){
   let name = [
     $("input#name").val(),
@@ -8,7 +8,7 @@ function getNameInputs(){
   return name;
 };
 
-//Function to get inputs from the scored fields
+//function to get inputs from the scored fields
 function getScoreInputs() {
   let scores = [
     parseInt($("input[name='question2']:checked").val()),
@@ -19,7 +19,7 @@ function getScoreInputs() {
   return scores;
 };
 
-//Function to add up scores and determine the winner
+//function to add up scores and determine the winner
 function evalWinner(scores) {
   let highScore;
   let winnerObjs;
@@ -50,18 +50,30 @@ function evalWinner(scores) {
   return winner;
 };
 
+//function to break ties, returns a single entry in 
+function tieBreaker (winner) {
+  let newWinner = winner
+  if (parseInt($("input[name='tiebreaker-question']:checked").val()) === 1) {
+    newWinner.splice(1,1)
+    return newWinner;
+  }
+  else {
+    newWinner.splice(0,1)
+    return newWinner;
+  }
+};
+
 //function to reveal the winning section
 function revealWinner(winner) {
   if (winner.length === 1) {
     $("section#" + winner[0]).show();
     $("section#" + winner[0]).addClass("active");
+    document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
   }
-  //handle tie conditions
   else {
-    $("h3#tie").show();
-    $("section#" + winner[0]).show();
-    $("section#" + winner[0]).addClass("active");
-    $("section#" + winner[1]).show();
+    lockQuiz();
+    $("section.tiebreaker").show();
+    document.querySelector("section.tiebreaker").scrollIntoView({behavior: 'smooth'});
   }
 };
 
@@ -70,6 +82,14 @@ function addName(name) {
   $(".result-title").prepend("<span class=\"name-target\"></span>");
   $(".name-target").text(name[0]);
   $(".name-target").css("color", name[1]);
+};
+
+//function to prevent user input in the quiz section
+function lockQuiz() {
+  $("form#quiz-form input").prop('disabled', true);
+  $("form#quiz-form select").prop('disabled', true);
+  $("form#quiz-form button").prop('disabled', true);
+  $("section.quiz").addClass("grayout");
 };
 
 //function to clear all inputs, reset radio buttons to default positions
@@ -85,25 +105,37 @@ function resetInputs() {
 function resetResults(){
   $("section.results").hide();
   $("section.results").removeClass("active");
-  $("h3#tie").hide();
+  $("section.tiebreaker").hide();
   $(".name-target").remove();
+  $("form#quiz-form input").prop('disabled', false);
+  $("form#quiz-form select").prop('disabled', false);
+  $("form#quiz-form button").prop('disabled', false);
+  $("section.quiz").removeClass("grayout");
 };
 
-//USER LOGIC
-//function for user interface, submit/reset button, calls other functions
+//USER INTERFACE LOGIC
 $(document).ready(function() {
-  $("form#quiz").submit(function(event) {
+  let name;
+  let scores;
+  let winner;
+  $("form#quiz-form").submit(function(event) {
     event.preventDefault();
+    name = getNameInputs();
+    scores = getScoreInputs();
+    winner = evalWinner(scores);
     resetResults();
-    let name = getNameInputs();
-    let scores = getScoreInputs();
-    let winner = evalWinner(scores);
     addName(name);
     revealWinner(winner);
-    document.querySelector("section.active").scrollIntoView({behavior: 'smooth'});
   });
   $("#reset").click(function(){
     resetInputs();
     resetResults();
+  });
+  $("form#tiebreaker-form").submit(function(event) {
+    event.preventDefault();
+    resetResults();
+    addName(name);
+    winner = tieBreaker(winner);
+    revealWinner(winner);
   });
 });
