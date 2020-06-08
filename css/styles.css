@@ -22,8 +22,8 @@ img {
 }
 
 .grayout {
-  opacity: 0.6; 
-  filter: alpha(opacity = 60);
+  opacity: 0.4; 
+  filter: alpha(opacity = 40);
 }
 
 .form-control, .form-control:focus {
@@ -32,7 +32,6 @@ img {
   font-family: 'Inconsolata', monospace;
   border: 1px solid #1c1e22;
 }
-
 
 input:-webkit-autofill, input:focus:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px #1c1e22 inset;
@@ -59,8 +58,6 @@ input:-webkit-autofill, input:focus:-webkit-autofill {
 select:invalid {
   color: gray; 
 }
-
-
 
 span.line {
   display: inline-block;
