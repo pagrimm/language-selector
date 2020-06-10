@@ -45,7 +45,7 @@ function tieBreaker (winner, tiebreaker) {
 
 
 //USER INTERFACE LOGIC
-//function to get inputs from the name and favorite color field
+//function to get inputs from the name and favorite color field, returns value of name and favorite color fields as an array
 function getNameInputs(){
   let name = [
     $("input#name").val(),
@@ -54,7 +54,7 @@ function getNameInputs(){
   return name;
 };
 
-//function to get inputs from the scored fields
+//function to get inputs from the scored fields, returns the values of the scored fields as an array
 function getScoreInputs() {
   let scores = [
     parseInt($("input[name='question2']:checked").val()),
@@ -65,6 +65,7 @@ function getScoreInputs() {
   return scores;
 };
 
+//function to get inputs from the tiebreaker question, returns value of the tiebreaker question input
 function getTiebreakerInputs() {
   tiebreaker = $("input[name='tiebreaker-question']:checked").val()
   return tiebreaker;
