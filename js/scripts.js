@@ -67,7 +67,7 @@ function getScoreInputs() {
 
 //function to get inputs from the tiebreaker question, returns value of the tiebreaker question input
 function getTiebreakerInputs() {
-  tiebreaker = $("input[name='tiebreaker-question']:checked").val()
+  let tiebreaker = $("input[name='tiebreaker-question']:checked").val()
   return tiebreaker;
 }
 
