@@ -1,25 +1,5 @@
 //BUSINESS LOGIC
-//function to get inputs from the name and favorite color field
-function getNameInputs(){
-  let name = [
-    $("input#name").val(),
-    $("input#question1").val()
-  ];
-  return name;
-};
-
-//function to get inputs from the scored fields
-function getScoreInputs() {
-  let scores = [
-    parseInt($("input[name='question2']:checked").val()),
-    parseInt($("select#question3").val()),
-    parseInt($("select#question4").val()),
-    parseInt($("input[name='question5']:checked").val())
-  ];
-  return scores;
-};
-
-//function to add up scores and determine the winner
+//function to add up scores and determine the winner, returns array of winner/winners
 function evalWinner(scores) {
   let highScore;
   let winnerObjs;
@@ -50,10 +30,10 @@ function evalWinner(scores) {
   return winner;
 };
 
-//function to break ties, returns a single entry in 
-function tieBreaker (winner) {
+//function to break ties, returns array with a single entry for winner
+function tieBreaker (winner, tiebreaker) {
   let newWinner = winner;
-  if (parseInt($("input[name='tiebreaker-question']:checked").val()) === 1) {
+  if (parseInt(tiebreaker) === 1) {
     newWinner.splice(1,1)
     return newWinner;
   }
@@ -62,6 +42,33 @@ function tieBreaker (winner) {
     return newWinner;
   }
 };
+
+
+//USER INTERFACE LOGIC
+//function to get inputs from the name and favorite color field
+function getNameInputs(){
+  let name = [
+    $("input#name").val(),
+    $("input#question1").val()
+  ];
+  return name;
+};
+
+//function to get inputs from the scored fields
+function getScoreInputs() {
+  let scores = [
+    parseInt($("input[name='question2']:checked").val()),
+    parseInt($("select#question3").val()),
+    parseInt($("select#question4").val()),
+    parseInt($("input[name='question5']:checked").val())
+  ];
+  return scores;
+};
+
+function getTiebreakerInputs() {
+  tiebreaker = $("input[name='tiebreaker-question']:checked").val()
+  return tiebreaker;
+}
 
 //function to reveal the winning section
 function revealWinner(winner) {
@@ -113,7 +120,7 @@ function resetResults(){
   $("section.quiz").removeClass("grayout");
 };
 
-//USER INTERFACE LOGIC
+//function for form submission, reset button functionality
 $(document).ready(function() {
   let name;
   let scores;
@@ -134,8 +141,9 @@ $(document).ready(function() {
   $("form#tiebreaker-form").submit(function(event) {
     event.preventDefault();
     resetResults();
+    let tiebreaker = getTiebreakerInputs();
     addName(name);
-    winner = tieBreaker(winner);
+    winner = tieBreaker(winner, tiebreaker);
     revealWinner(winner);
   });
 });
